@@ -20,10 +20,6 @@ public class T implements Comparable<T> {
         return this.position;
     }
 
-    public void increaseCounter() {
-        this.counter++;
-    }
-
     public int getCount() {
         return this.counter;
 
@@ -45,9 +41,12 @@ public class T implements Comparable<T> {
     public void addNode(T destination) {
         if (!checkList(destination)) {
             this.nodelist.add(destination);
-            this.counter++;
         }
 
+    }
+
+    public void increase() {
+        this.counter++;
     }
 
 }

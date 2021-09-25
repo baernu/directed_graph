@@ -29,7 +29,8 @@ public class DirectedGraph extends T {
 
         if (!checkIfEdgeExists(vertex, destination)) {
             vertex.addNode(destination);
-            destination.increaseCounter();
+            destination.increase();
+
         }
 
     }
