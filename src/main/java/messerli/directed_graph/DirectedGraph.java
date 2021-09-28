@@ -6,10 +6,14 @@ import java.util.stream.Collectors;
 
 public class DirectedGraph extends T {
 
+    private List<Edge> edgeList;
+
     private List<T> allNodeList;
 
     public DirectedGraph() {
+
         allNodeList = new ArrayList<>();
+        edgeList = new ArrayList<>();
     }
 
     public boolean checkNode(T t) {
@@ -28,8 +32,10 @@ public class DirectedGraph extends T {
         addNodeToAllList(destination);
 
         if (!checkIfEdgeExists(vertex, destination)) {
-            vertex.addNode(destination);
-            destination.increase();
+            vertex.addNodeToNodeListOut(destination);
+            destination.addNodeToNodeListIn(vertex);
+            edgeList.add(new Edge(vertex, destination));
+
 
         }
 
@@ -40,7 +46,7 @@ public class DirectedGraph extends T {
     }
 
     public boolean checkIfEdgeExists(T vertex, T destination) {
-        return vertex.checkList(destination);
+        return edgeList.stream().anyMatch(e -> e.equals(new Edge(vertex, destination)));
     }
 
     public List<T> rankList() {

@@ -2,7 +2,7 @@ package messerli.directed_graph;
 
 public class PageRank extends T {
     private final DirectedGraph dirg;
-    private double d = 0.82;
+    private double d = 0.81;
 
     public PageRank(DirectedGraph dirg) {
         this.dirg = dirg;
@@ -11,14 +11,14 @@ public class PageRank extends T {
 
 
     public void SetComputePageRankForNode(T t) {
-        double sumPageRank = 1.0;
-        for (T vertice : t.getList()) {
+        double sumPageRank = 0;
+        for (T vertice : t.getNodeListIn()) {
             sumPageRank += vertice.getPageRankValue();
         }
-        if (t.getList().size() != 0) {
-            t.setPageRankValue((1-d)/(dirg.getAllNodeList().size()) + d*sumPageRank/(t.getList().size()));
+        if (t.getNodeListIn().size() != 0) {
+            t.setPageRankValue((1-d)/(dirg.getAllNodeList().size()) + d*sumPageRank/(t.getNodeListIn().size()));
         } else {
-            t.setPageRankValue((1-d)/(dirg.getAllNodeList().size()) + d*sumPageRank/1);
+            t.setPageRankValue((1-d)/(dirg.getAllNodeList().size()));
         }
 
         

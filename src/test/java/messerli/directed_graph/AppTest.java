@@ -56,7 +56,6 @@ public class AppTest {
     public void testT() {
 
         assertEquals(t1.getInt(), 1);
-        assertEquals(t1.getCount(), 1);
     }
 
 

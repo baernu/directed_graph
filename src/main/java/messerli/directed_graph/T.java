@@ -6,27 +6,24 @@ import java.util.Random;
 
 public class T implements Comparable<T> {
     private Random random = new Random();
-    private double pageRankValue = 2; //random.nextDouble()*1000;
+    private double pageRankValue = 1; //random.nextDouble()*1000;
     private int position;
-    private int counter = 0;
-    private List<T> nodelist;
+    private List<T> nodeListOut;
+    private List<T> nodeListIn;
 
     public T() {
-    };
+    }
 
     public T(int position) {
         this.position = position;
-        this.nodelist = new ArrayList<>();
+        this.nodeListOut = new ArrayList<>();
+        this.nodeListIn = new ArrayList<>();
     }
 
     public int getInt() {
         return this.position;
     }
 
-    public int getCount() {
-        return this.counter;
-
-    }
     public double getPageRankValue() {
         return this.pageRankValue;
     }
@@ -38,23 +35,35 @@ public class T implements Comparable<T> {
         return Double.compare(t.getPageRankValue(), this.getPageRankValue());
     }
 
-    public List<T> getList() {
-        return this.nodelist;
+    public List<T> getNodeListOut() {
+        return this.nodeListOut;
     }
 
-    public boolean checkList(T destination) {
-        return nodelist.stream().anyMatch(element -> element.equals(destination));
+    public List<T> getNodeListIn() {
+        return this.nodeListIn;
     }
 
-    public void addNode(T destination) {
-        if (!checkList(destination)) {
-            this.nodelist.add(destination);
+    public boolean checkListNodeOut(T destination) {
+        return nodeListOut.stream().anyMatch(element -> element.equals(destination));
+    }
+
+    public boolean checkListNodeIn(T destination) {
+        return nodeListIn.stream().anyMatch(element -> element.equals(destination));
+    }
+
+    public void addNodeToNodeListOut(T destination) {
+        if (!checkListNodeOut(destination)) {
+            this.nodeListOut.add(destination);
         }
 
     }
 
-    public void increase() {
-        this.counter++;
+    public void addNodeToNodeListIn(T destination) {
+        if (!checkListNodeIn(destination)) {
+            this.nodeListIn.add(destination);
+        }
+
     }
+
 
 }

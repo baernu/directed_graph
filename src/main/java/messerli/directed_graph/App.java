@@ -46,7 +46,7 @@ public class App {
         app.dg.printRankList();
         app.dg.getAllNodeList().stream().forEach(e-> System.out.println(e.getInt()));
         app.dg.getAllNodeList().stream().forEach(e -> {
-            e.getList().stream().forEach(e1 -> System.out.print(e1.getInt() + " " + e1.getPageRankValue() + " "));
+            e.getNodeListIn().stream().forEach(e1 -> System.out.print(e1.getInt() + " " + e1.getPageRankValue() + " "));
             System.out.println();
         });
 
