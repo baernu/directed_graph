@@ -2,6 +2,7 @@ package messerli.directed_graph;
 
 public class App {
     DirectedGraph dg = new DirectedGraph();
+    PageRank pageRank = new PageRank(dg);
     T t = new T();
 
     public static void main(String[] args) {
@@ -23,6 +24,15 @@ public class App {
         app.dg.addEdge(t6, t3);
         app.dg.addEdge(t6, t4);
 
+        app.pageRank.SetPageRankForAllNodes();
+        app.pageRank.SetPageRankForAllNodes();
+        app.pageRank.SetPageRankForAllNodes();
+        app.pageRank.SetPageRankForAllNodes();
+        app.pageRank.SetPageRankForAllNodes();
+
         app.dg.printRankList();
+        app.dg.getAllNodeList().stream().forEach(e -> System.out.print(e.getInt() + " "));
+//        System.out.println(app.dg.getAllNodeList().size());
+
     }
 }

@@ -35,6 +35,10 @@ public class DirectedGraph extends T {
 
     }
 
+    public List<T> getAllNodeList() {
+        return this.allNodeList;
+    }
+
     public boolean checkIfEdgeExists(T vertex, T destination) {
         return vertex.checkList(destination);
     }
@@ -44,7 +48,7 @@ public class DirectedGraph extends T {
     }
 
     public void printRankList() {
-        rankList().stream().forEach(element -> System.out.println(element.getInt() + " ," + element.getCount()));
+        rankList().stream().forEach(element -> System.out.println(element.getInt() + " ," + element.getPageRankValue()));
     }
 
 }

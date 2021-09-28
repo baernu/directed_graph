@@ -2,8 +2,11 @@ package messerli.directed_graph;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class T implements Comparable<T> {
+    private Random random = new Random();
+    private double pageRankValue = 2; //random.nextDouble()*1000;
     private int position;
     private int counter = 0;
     private List<T> nodelist;
@@ -24,10 +27,15 @@ public class T implements Comparable<T> {
         return this.counter;
 
     }
+    public double getPageRankValue() {
+        return this.pageRankValue;
+    }
+    public void setPageRankValue(double pageRankValue) {
+        this.pageRankValue = pageRankValue;
+    }
 
-    @Override
     public int compareTo(T t) {
-        return Integer.compare(t.getCount(), this.getCount());
+        return Double.compare(t.getPageRankValue(), this.getPageRankValue());
     }
 
     public List<T> getList() {
