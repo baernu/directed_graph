@@ -17,24 +17,25 @@ public class App {
         T t8 = new T(8);
         T t9 = new T(9);
 
-        app.dg.addEdge(t1, t3);
-        app.dg.addEdge(t1, t5);
-        app.dg.addEdge(t1, t6);
-        app.dg.addEdge(t2, t1);
-        app.dg.addEdge(t2, t4);
-        app.dg.addEdge(t5, t6);
-        app.dg.addEdge(t6, t2);
-        app.dg.addEdge(t6, t3);
-        app.dg.addEdge(t6, t4);
-        app.dg.addEdge(t1, t9);
-        app.dg.addEdge(t9, t8);
-        app.dg.addEdge(t8, t5);
-        app.dg.addEdge(t3, t8);
-        app.dg.addEdge(t3, t2);
-        app.dg.addEdge(t2, t7);
-        app.dg.addEdge(t4, t7);
-        app.dg.addEdge(t7, t3);
-        app.dg.addEdge(t8, t7);
+        app.dg.addEdge(new Edge(t1, t3));
+        app.dg.addEdge(new Edge(t1, t5));
+        app.dg.addEdge(new Edge(t1, t6));
+        app.dg.addEdge(new Edge(t2, t1));
+        app.dg.addEdge(new Edge(t2, t4));
+        app.dg.addEdge(new Edge(t5, t6));
+        app.dg.addEdge(new Edge(t6, t2));
+        app.dg.addEdge(new Edge(t6, t3));
+        app.dg.addEdge(new Edge(t6, t4));
+        app.dg.addEdge(new Edge(t1, t9));
+        app.dg.addEdge(new Edge(t9, t8));
+        app.dg.addEdge(new Edge(t8, t5));
+        app.dg.addEdge(new Edge(t3, t8));
+        app.dg.addEdge(new Edge(t3, t2));
+        app.dg.addEdge(new Edge(t2, t7));
+        app.dg.addEdge(new Edge(t4, t7));
+        app.dg.addEdge(new Edge(t7, t3));
+        app.dg.addEdge(new Edge(t8, t7));
+        app.dg.addEdge(new Edge(t3, t5));
 
         int n = app.dg.getAllNodeList().size();
         while (n >= 0) {

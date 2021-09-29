@@ -17,7 +17,15 @@ public class DirectedGraph extends T {
     }
 
     public boolean checkNode(T t) {
+
         return allNodeList.stream().anyMatch(element -> element.equals(t));
+    }
+
+    public boolean checkNodeListIn(T t) {
+        return t.getNodeListIn().stream().anyMatch(element -> element.equals(t));
+    }
+    public boolean checkNodeListOut(T t) {
+        return t.getNodeListOut().stream().anyMatch(element -> element.equals(t));
     }
 
     public void addNodeToAllList(T t) {
@@ -27,14 +35,14 @@ public class DirectedGraph extends T {
 
     }
 
-    public void addEdge(T vertex, T destination) {
-        addNodeToAllList(vertex);
-        addNodeToAllList(destination);
+    public void addEdge(Edge e) {
+        addNodeToAllList(e.getVertex());
+        addNodeToAllList(e.getDestination());
 
-        if (!checkIfEdgeExists(vertex, destination)) {
-            vertex.addNodeToNodeListOut(destination);
-            destination.addNodeToNodeListIn(vertex);
-            edgeList.add(new Edge(vertex, destination));
+        if (!checkIfEdgeExists(e)) {
+            e.getVertex().addNodeToNodeListOut(e);
+            e.getDestination().addNodeToNodeListIn(e);
+            edgeList.add(e);
 
 
         }
@@ -45,8 +53,8 @@ public class DirectedGraph extends T {
         return this.allNodeList;
     }
 
-    public boolean checkIfEdgeExists(T vertex, T destination) {
-        return edgeList.stream().anyMatch(e -> e.equals(new Edge(vertex, destination)));
+    public boolean checkIfEdgeExists(Edge e) {
+        return edgeList.stream().anyMatch(element -> element.equals(e));
     }
 
     public List<T> rankList() {

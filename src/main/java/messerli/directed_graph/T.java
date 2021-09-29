@@ -43,24 +43,24 @@ public class T implements Comparable<T> {
         return this.nodeListIn;
     }
 
-    public boolean checkListNodeOut(T destination) {
-        return nodeListOut.stream().anyMatch(element -> element.equals(destination));
+    public boolean checkListNodeOut(Edge e) {
+        return e.getVertex().getNodeListOut().stream().anyMatch(element -> element.equals(e.getDestination()));
     }
 
-    public boolean checkListNodeIn(T destination) {
-        return nodeListIn.stream().anyMatch(element -> element.equals(destination));
+    public boolean checkListNodeIn( Edge e) {
+        return e.getDestination().getNodeListIn().stream().anyMatch(element -> element.equals(e.getVertex()));
     }
 
-    public void addNodeToNodeListOut(T destination) {
-        if (!checkListNodeOut(destination)) {
-            this.nodeListOut.add(destination);
+    public void addNodeToNodeListOut(Edge e) {
+        if (!checkListNodeOut(e)) {
+            e.getVertex().getNodeListOut().add(e.getDestination());
         }
 
     }
 
-    public void addNodeToNodeListIn(T destination) {
-        if (!checkListNodeIn(destination)) {
-            this.nodeListIn.add(destination);
+    public void addNodeToNodeListIn(Edge e) {
+        if (!e.getDestination().checkListNodeIn(e)) {
+            e.getDestination().getNodeListIn().add(e.getVertex());
         }
 
     }
