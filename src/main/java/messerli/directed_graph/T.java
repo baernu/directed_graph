@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Random;
 
 public class T implements Comparable<T> {
-    private Random random = new Random();
-    private double pageRankValue = 1; //random.nextDouble()*1000;
+
+    private double pageRankValue = 1;
     private int position;
     private List<T> nodeListOut;
     private List<T> nodeListIn;
@@ -53,14 +53,14 @@ public class T implements Comparable<T> {
 
     public void addNodeToNodeListOut(Edge e) {
         if (!checkListNodeOut(e)) {
-            e.getVertex().getNodeListOut().add(e.getDestination());
+            nodeListOut.add(e.getDestination());
         }
 
     }
 
     public void addNodeToNodeListIn(Edge e) {
         if (!e.getDestination().checkListNodeIn(e)) {
-            e.getDestination().getNodeListIn().add(e.getVertex());
+            nodeListIn.add(e.getVertex());
         }
 
     }

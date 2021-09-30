@@ -7,23 +7,21 @@ import java.util.stream.Collectors;
 public class DirectedGraph extends T {
 
     private List<Edge> edgeList;
-
     private List<T> allNodeList;
 
     public DirectedGraph() {
-
         allNodeList = new ArrayList<>();
         edgeList = new ArrayList<>();
     }
 
     public boolean checkNode(T t) {
-
         return allNodeList.stream().anyMatch(element -> element.equals(t));
     }
 
     public boolean checkNodeListIn(T t) {
         return t.getNodeListIn().stream().anyMatch(element -> element.equals(t));
     }
+
     public boolean checkNodeListOut(T t) {
         return t.getNodeListOut().stream().anyMatch(element -> element.equals(t));
     }
@@ -32,7 +30,6 @@ public class DirectedGraph extends T {
         if (!checkNode(t)) {
             allNodeList.add(t);
         }
-
     }
 
     public void addEdge(Edge e) {
@@ -43,11 +40,9 @@ public class DirectedGraph extends T {
             e.getVertex().addNodeToNodeListOut(e);
             e.getDestination().addNodeToNodeListIn(e);
             edgeList.add(e);
-
-
         }
-
     }
+
 
     public List<T> getAllNodeList() {
         return this.allNodeList;

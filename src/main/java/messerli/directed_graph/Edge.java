@@ -5,8 +5,8 @@ public class Edge extends T {
     private T destination;
 
     public Edge(T vertex, T destination) {
-        this.vertex = destination;
-        this.destination = vertex;
+        this.vertex = vertex;
+        this.destination = destination;
     }
 
     public T getVertex() {

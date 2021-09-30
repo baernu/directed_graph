@@ -26,6 +26,7 @@ public class App {
         app.dg.addEdge(new Edge(t6, t2));
         app.dg.addEdge(new Edge(t6, t3));
         app.dg.addEdge(new Edge(t6, t4));
+
         app.dg.addEdge(new Edge(t1, t9));
         app.dg.addEdge(new Edge(t9, t8));
         app.dg.addEdge(new Edge(t8, t5));
@@ -37,11 +38,9 @@ public class App {
         app.dg.addEdge(new Edge(t8, t7));
         app.dg.addEdge(new Edge(t3, t5));
 
-        int n = app.dg.getAllNodeList().size();
-        while (n >= 0) {
-            app.pageRank.SetPageRankForAllNodes();
-            n--;
-        }
+        app.pageRank.doPageRank();
+
+
 
 
         app.dg.printRankList();

@@ -8,12 +8,13 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Unit test for simple App.
+ * Unit test for directed Graph: compute the page rank for all nodes.
  */
 public class AppTest {
-    static T t1, t2, t3, t4, t5, t6, t12, t13;
+    static T t1, t2, t3, t4, t5, t6;
     static DirectedGraph dirg;
     static Edge edge;
+    static PageRank pageRank;
 
     @BeforeAll
     static public void installation() {
@@ -34,6 +35,8 @@ public class AppTest {
         AppTest.dirg.addEdge(new Edge(t6, t2));
         AppTest.dirg.addEdge(new Edge(t6, t3));
         AppTest.dirg.addEdge(new Edge(t6, t4));
+
+        AppTest.pageRank = new PageRank(dirg);
     }
 
     /**
@@ -44,10 +47,6 @@ public class AppTest {
         assertEquals(AppTest.dirg.getAllNodeList().size(), 6);
         AppTest.dirg.addNodeToAllList(new T(7));
         assertEquals(AppTest.dirg.getAllNodeList().size(), 7);
-
-        /*assertThrows(IllegalArgumentException.class, () -> {
-            AppTest.dirg.addEdge(t2, t1);
-        });*/
     }
 
     /**
@@ -77,8 +76,8 @@ public class AppTest {
      */
     @Test
     public void testAddEdge() {
-        AppTest.t12 = new T(12);
-        AppTest.t13 = new T(13);
+        T t12 = new T(12);
+        T t13 = new T(13);
         AppTest.edge = new Edge(t12, t13);
 
         assertFalse(AppTest.dirg.checkIfEdgeExists(AppTest.edge));
@@ -88,11 +87,26 @@ public class AppTest {
         AppTest.dirg.addEdge(AppTest.edge);
         assertTrue(AppTest.dirg.checkIfEdgeExists(AppTest.edge));
 
-        assertTrue(AppTest.dirg.checkNode(AppTest.t12));
-        assertTrue(AppTest.dirg.checkNode(AppTest.t13));
+        assertTrue(AppTest.dirg.checkNode(t12));
+        assertTrue(AppTest.dirg.checkNode(t13));
 
         assertTrue(AppTest.edge.getDestination().checkListNodeIn(AppTest.edge));
         assertTrue(AppTest.edge.getVertex().checkListNodeOut(AppTest.edge));
 
+    }
+
+    /**
+     * Test if the page rank algorithm reacte on a modification
+     */
+    @Test
+    public void testPageRank() {
+        AppTest.pageRank.doPageRank();
+        T tx = AppTest.dirg.rankList().get(5);
+        double d1 = tx.getPageRankValue();
+        T ty = AppTest.dirg.rankList().get(3);
+        AppTest.dirg.addEdge(new Edge(ty, tx));
+        AppTest.pageRank.doPageRank();
+        double d2 = tx.getPageRankValue();
+        assertTrue(d1 < d2);
     }
 }
