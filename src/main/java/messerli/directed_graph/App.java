@@ -44,9 +44,11 @@ public class App {
 
 
         app.dg.printRankList();
-        app.dg.getAllNodeList().stream().forEach(e-> System.out.println(e.getInt()));
-        app.dg.getAllNodeList().stream().forEach(e -> {
-            e.getNodeListIn().stream().forEach(e1 -> System.out.print(e1.getInt() + " " + e1.getPageRankValue() + " "));
+        System.out.println();
+        app.dg.getAllNodeList().stream().sorted().forEach(e -> {
+            System.out.print("Vertex: " + e.getInt() + "  ");
+            e.getNodeListIn().stream().forEach(e1 -> System.out.printf("    Node-In: " +
+                    e1.getInt() + "    Page Rank value:   %.5f" ,e1.getPageRankValue()));
             System.out.println();
         });
 

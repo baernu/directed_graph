@@ -57,7 +57,8 @@ public class DirectedGraph extends T {
     }
 
     public void printRankList() {
-        rankList().stream().forEach(element -> System.out.println(element.getInt() + " ," + element.getPageRankValue()));
+        rankList().stream().forEach(element -> System.out.println("Vertex: " + element.getInt() +
+                "    Page Rank value:   " + element.getPageRankValue()));
     }
 
 }

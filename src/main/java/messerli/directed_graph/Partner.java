@@ -5,6 +5,8 @@ public class Partner {
     PageRank pageRank = new PageRank(dg);
     T t = new T();
 
+
+
     public static void main(String[] args) {
         Partner partner = new Partner();
         T t1 = new T(1);
@@ -37,11 +39,10 @@ public class Partner {
 
 
 
-
-        partner.dg.printRankList();
-        partner.dg.getAllNodeList().stream().forEach(e-> System.out.println(e.getInt()));
-        partner.dg.getAllNodeList().stream().forEach(e -> {
-            e.getNodeListIn().stream().forEach(e1 -> System.out.print(e1.getInt() + " " + e1.getPageRankValue() + " "));
+        System.out.println();
+        partner.dg.getAllNodeList().stream().sorted().forEach(e -> {
+            System.out.printf("Teilnehmer/in: " + e.getInt() + "    Page Rank value  :   %.2f", e.getPageRankValue());
+            e.getNodeListIn().stream().forEach(e1 -> System.out.print("    likes von : " + e1.getInt() ));
             System.out.println();
         });
 
