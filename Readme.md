@@ -19,18 +19,24 @@ Your Tasks:
 
 a) Create a simple representation in code of a Directed Graph with weighted nodes.
 
+Dies sind die Klassen: DirectedGraph, Edge, T
+
 b) Describe in your own word and implement the algorithm for computing the page rank
   of a small example graph.
 
+Dies sind die Klassen: DirectedGraph, Edge, T, PageRank, App
+
 c) Apply your algorithm to a real world example, not being websites.
 
+Dies sind die Klassen: DirectedGraph, Edge, T, PageRank, Partner
+
 ## Erklärungen zum Page Rank und zur Implementierung
-Der Page Rank ist eine Gewichtung der Nodes. Dabei wird diese Gewichtung stärker, je mehr Edges bei diesem 
-Node eingehen. Weiter wird die Gewichtung grösser, wenn Edges eingehen, die selbst ein hohes eigenes
-Gewicht haben.
+Der Page Rank ist eine Gewichtung der Nodes. Dabei wird diese Gewichtung für einen Node stärker, 
+je mehr Edges bei diesem Node eingehen. Weiter wird die Gewichtung grösser, wenn Edges eingehen, 
+die selbst ein hohes eigenes Gewicht haben.
 
 Ich habe in meinem Beispielprogramm folgende Formel von der website: https://en.wikipedia.org/wiki/PageRank
-verwendedt.
+verwendet.
 
 
 ![img_1.png](img_1.png)
@@ -48,12 +54,16 @@ Edge dar.
 Zusätzlich hilft die Edge Klasse auch Fehler beim Aufbau zu verhindern, da die Nodes dann
 nicht mehr vertauscht werden können.
 
-In der PageRank Klasse wird dieser Page Rank Algorihmus umgesetzt und angewandt.
+In der PageRank Klasse wird dieser Page Rank Algorithmus umgesetzt und angewandt.
 Bei meiner Umsetzung wird der Rekursive Algorithmus n^2 mal angewandt, damit die Werte auf etwa 5 Stellen
 nach dem Komma genau sind.
 
 In der App Klasse gibt die main Metode dann die Page Rank Werte für jeden Node absteigend aus.
 Weiter werden die Werte aller eingehenden Nodes für jeden Node ausgegeben.
+
+Die initiale Gewichtung habe ich bei jedem Node auf den Wert 1 gesetzt, so ergibt dann die Summe
+der Gewichtung aller Nodes 1, was praktisch ist um dann eifach auf die prozentualen Werte für jeden
+Node zu kommen.
 
 
 ## A real world example
