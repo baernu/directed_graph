@@ -1,5 +1,8 @@
 package messerli.directed_graph;
 
+/**
+ * class which implement the algorithm for the Page Rank value
+ */
 public class PageRank extends T {
     private final DirectedGraph dirg;
     private double d = 0.85;
@@ -10,9 +13,9 @@ public class PageRank extends T {
 
 
     /**
-     * Methode compute for a node the sum of the page ranks from all the linked edges
-     * and set for the node the new page rank value
-     * @param t is the parameter for the specific node
+     * Method compute for a Node the sum of the Page Ranks from all the linked Edges
+     * and set for the Node the new Page Rank value.
+     * @param t: The Node t is the parameter for the specific Node
      */
     public void SetComputePageRankForNode(T t) {
         double sumPageRank = 0;
@@ -27,7 +30,7 @@ public class PageRank extends T {
     }
 
     /**
-     * Methode sets for each node the page rank value
+     * Method sets for each Node the Page Rank value
      */
     public void SetPageRankForAllNodes() {
         for (T vertice: dirg.getAllNodeList()) {
@@ -36,7 +39,7 @@ public class PageRank extends T {
     }
 
     /**
-     * Methode makes n^2 recursive calls and sets for all nodes the new computed page rank value
+     * Method makes n^2 recursive calls and sets for all Nodes the new computed Page Rank value
      */
     public void doPageRank() {
         int n = (int) Math.pow(dirg.getAllNodeList().size(), 2);

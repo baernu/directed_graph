@@ -1,7 +1,12 @@
 package messerli.directed_graph;
 
+/**
+ * class which represents a specific Edge
+ */
 public class Edge extends T {
+    //starting Node of the Edge
     private T vertex;
+    //destination Node of the Edge
     private T destination;
 
     public Edge(T vertex, T destination) {

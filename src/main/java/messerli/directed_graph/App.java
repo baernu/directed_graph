@@ -1,5 +1,8 @@
 package messerli.directed_graph;
 
+/**
+ * class which shows the output of a small Page Rang Example with nine Nodes and nineteen edges.
+ */
 public class App {
     DirectedGraph dg = new DirectedGraph();
     PageRank pageRank = new PageRank(dg);

@@ -33,7 +33,7 @@ Dies sind die Klassen: DirectedGraph, Edge, T, PageRank, Partner
 ## Erklärungen zum Page Rank und zur Implementierung
 Der Page Rank ist eine Gewichtung der Nodes. Dabei wird diese Gewichtung für einen Node stärker, 
 je mehr Edges bei diesem Node eingehen. Weiter wird die Gewichtung grösser, wenn Edges eingehen, 
-die selbst ein hohes eigenes Gewicht haben.
+die selbst ein hohes eigenes Gewicht haben und möglichst wenige Links zu anderen Seiten.
 
 Ich habe in meinem Beispielprogramm folgende Formel von der website: https://en.wikipedia.org/wiki/PageRank
 verwendet.
@@ -58,11 +58,11 @@ In der PageRank Klasse wird dieser Page Rank Algorithmus umgesetzt und angewandt
 Bei meiner Umsetzung wird der Rekursive Algorithmus n^2 mal angewandt, damit die Werte auf etwa 5 Stellen
 nach dem Komma genau sind.
 
-In der App Klasse gibt die main Metode dann die Page Rank Werte für jeden Node absteigend aus.
+In der App Klasse gibt die main Methode dann die Page Rank Werte für jeden Node absteigend aus.
 Weiter werden die Werte aller eingehenden Nodes für jeden Node ausgegeben.
 
 Die initiale Gewichtung habe ich bei jedem Node auf den Wert 1 gesetzt, so ergibt dann die Summe
-der Gewichtung aller Nodes 1, was praktisch ist um dann eifach auf die prozentualen Werte für jeden
+der Gewichtung aller Nodes 1, was praktisch ist, um dann einfach auf die prozentualen Werte für jeden
 Node zu kommen.
 
 
@@ -70,15 +70,17 @@ Node zu kommen.
 Meine Anwendung zielt auf die Partnervermittlung. Nehmen wir das Beispiel Tinder.
 Jeder Benutzer, jede Benutzerin von Tinder stellt einen Node dar. Jedes like stellt eine Edge
 dar, wobei der oder die, welche/r geliked wird, bekommt so ein höheres eigenes Gewicht.
-Wird eine Person von einer anderen Person geliked wird, die ein hohes eigenes Gewicht hat, ist es noch 
-besser.
+Wird eine Person von einer anderen Person geliked, die ein hohes eigenes Gewicht hat, ist es noch 
+besser. Und wenn diese "attraktive" Person, die das like macht, wenig andere liked, dann ist es 
+super.
 Mögliche Anwendungen davon sind:
-Es kann ein Ranking von den am meisten gelikten Personen erstellt werden. Und dies wird auch 
-gemacht.(Top-Picks)
+Es kann ein Ranking von den am meisten gelikten Personen erstellt werden. Das Ranking zeigt dann
+auf wer wie attraktiv bewertet wurde.
 Weiter wäre es so möglich Personen Zielpersonen darzustellen, die ein ähnliches Gewicht haben.
 Personen treffen also auf Personen, die ähnlich attraktiv eingestuft wurden.
 Angenommen, dass Personen mit einem hohen Gewicht öfters gezeigt werden, kann diese Gewichtung 
-bewusst manipuliert werden, im Sinne wer mehr bezahlt, kriegt ein höheres Gewicht und wird so 
+bewusst manipuliert werden, für jene, die nicht so attraktiv bewertet wuden.
+Im Sinne, dass wer mehr bezahlt, kriegt dann ein höheres Gewicht und wird so 
 öfters angezeigt. 
 Bei Tinder gibts die Booster. (Booste dein Profil und sichere dir damit mehr Likes)
 Gut möglich, dass wer so einen Boost bezahlt, dann ein viel höheres Gewicht erhält, aber nur für eine 

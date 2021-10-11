@@ -1,5 +1,9 @@
 package messerli.directed_graph;
 
+/**
+ * class which apply the real world example of the Page Rank Algorithm.
+ * This example shows how attractive persons are valued in a partner finding tool.
+ */
 public class Partner {
     DirectedGraph dg = new DirectedGraph();
     PageRank pageRank = new PageRank(dg);
